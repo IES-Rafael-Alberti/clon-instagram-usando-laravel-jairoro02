@@ -19,9 +19,24 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'nick',
         'email',
         'password',
+        'image'
     ];
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes(){
+        return $this->hasMany(Acogida::class);
+    }
+
+    public function images(){
+        return $this->hasMany(Image::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

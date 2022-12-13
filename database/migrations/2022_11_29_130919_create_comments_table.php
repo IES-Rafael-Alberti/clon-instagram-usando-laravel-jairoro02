@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_image');
+            $table->foreign('id_image')->references('id')->on('images')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('content',300);
             $table->timestamps();
         });
     }
