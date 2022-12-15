@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('image_path',200);
             $table->string('description',200);
             $table->timestamps();

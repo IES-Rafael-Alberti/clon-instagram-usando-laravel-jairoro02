@@ -18,6 +18,8 @@ class ImageFactory extends Factory
     {
         return [
             //
+            'image_path' =>fake()->imageUrl(360,360),
+            'description' => fake("es_ES")->paragraph(1),
         ];
     }
 }
