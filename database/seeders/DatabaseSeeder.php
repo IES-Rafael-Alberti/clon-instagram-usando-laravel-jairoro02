@@ -18,8 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(3)->create();
-        User::factory(3)->has(Image::factory(2),'images')->create();
+        User::factory(1)->create();
+        User::factory(1)->has(Image::factory(1),'images')->create();
+
 
 
         // \App\Models\User::factory()->create([

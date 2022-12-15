@@ -16,6 +16,20 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
+            <!-- surname -->
+            <div>
+                <x-input-label for="surname" :value="__('Surname')" />
+                <x-text-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus />
+                <x-input-error :messages="$errors->get('surname')" class="mt-2" />
+            </div>
+
+            <!-- nick -->
+            <div>
+                <x-input-label for="nick" :value="__('Nick')" />
+                <x-text-input id="nck" class="block mt-1 w-full" type="text" name="nick" :value="old('nick')" required autofocus />
+                <x-input-error :messages="$errors->get('nick')" class="mt-2" />
+            </div>
+
             <!-- Email Address -->
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />

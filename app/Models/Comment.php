@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'image_id',
+        'content',
+    ];
 
     public function images(){
         return $this->belongsTo(Image::class);
