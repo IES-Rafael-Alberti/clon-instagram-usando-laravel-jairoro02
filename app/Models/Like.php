@@ -9,11 +9,11 @@ class Like extends Model
 {
     use HasFactory;
 
-    public function images(){
+    public function image(){
         return $this->belongsTo(Image::class);
     }
 
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }

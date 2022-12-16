@@ -16,14 +16,14 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
-            <!-- surname -->
+            <!-- Surname -->
             <div>
                 <x-input-label for="surname" :value="__('Surname')" />
                 <x-text-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus />
                 <x-input-error :messages="$errors->get('surname')" class="mt-2" />
             </div>
 
-            <!-- nick -->
+            <!-- Nick -->
             <div>
                 <x-input-label for="nick" :value="__('Nick')" />
                 <x-text-input id="nck" class="block mt-1 w-full" type="text" name="nick" :value="old('nick')" required autofocus />
@@ -62,11 +62,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('No estás registrado?') }}
                 </a>
 
                 <x-primary-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Registrarse') }}
                 </x-primary-button>
             </div>
         </form>

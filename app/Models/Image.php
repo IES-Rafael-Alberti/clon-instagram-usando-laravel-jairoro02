@@ -25,4 +25,8 @@ class Image extends Model
     public function likes(){
         return $this->hasMany(Acogida::class);
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
