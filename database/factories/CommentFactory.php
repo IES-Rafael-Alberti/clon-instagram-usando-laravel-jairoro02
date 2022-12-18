@@ -18,6 +18,7 @@ class CommentFactory extends Factory
     {
         return [
             //
+            
             'content'=>fake("es_ES")->paragraph(),
         ];
     }

@@ -18,6 +18,6 @@ class CommentSeeder extends Seeder
      * @return void
      */
     public function run(){
-        //prueba
+        
     }
 }

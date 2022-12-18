@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
@@ -14,17 +18,17 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        return view('index', [ 'images' =>Image::all()],['comments' => Comment::all()]);
     }
 
-    /**
+    /**s
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,8 +38,17 @@ class ImageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $image = new Image;
+        $str = $request->file('image')->store('public');
+        $str = substr($str, 7);
+        $image->image_path= "/storage/" . $str;
+        $datos = $request->all();
+        $image->description = $datos["description"];
+        $image->user_id = Auth::user()->id;
+        $image->save();
+
+        return Redirect::route('subirimagen');
     }
 
     /**

@@ -33,10 +33,16 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
         
-        $str= $request->file('image')->store('public');
-        $str = substr($str, 7);
-        $request->user()->image = "/storage/" . $str;
-        $request->user()->save();
+        if($request->file('image') == null){
+            $request->user()->save();
+        }else{
+            $str= $request->file('image')->store('public');
+            $str = substr($str, 7);
+            $request->user()->image = "/storage/" . $str;
+            $request->user()->save();
+        }
+        return $request;
+        
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

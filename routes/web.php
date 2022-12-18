@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,18 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if(Route::has('login')){
-        return view('auth/register');
-    }else{
-        return view('welcome');
-    }
-});
+    return view('index');
+})->middleware(['auth', 'verified'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/subirimagen', function () {
+    return view('subirimagen');
+})->middleware(['auth', 'verified'])->name('subirimagen');
+
 Route::middleware('auth')->group(function () {
+    Route::resource('images', ImageController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
