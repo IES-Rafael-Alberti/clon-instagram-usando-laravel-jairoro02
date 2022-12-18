@@ -35,12 +35,6 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory()->create();
         $image = Image::factory()->for($user->first())->create();
-        Comment::factory(1)
-            ->for($user->first())
-            ->for($image->first())
-            ->create();
-
-
         Like::factory(1)
         ->for($user->first())
         ->for($image->first())

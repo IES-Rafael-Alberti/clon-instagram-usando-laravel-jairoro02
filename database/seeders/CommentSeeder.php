@@ -18,11 +18,6 @@ class CommentSeeder extends Seeder
      * @return void
      */
     public function run(){
-        $user = User::factory(1)->create();
-        $image = Image::factory(1)->for($user)->create();
-        Comment::factory()
-        ->for($user)
-        ->for($image)
-        ->create();
+        //prueba
     }
 }
