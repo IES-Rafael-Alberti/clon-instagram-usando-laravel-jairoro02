@@ -59,7 +59,7 @@ class ImageController extends Controller
      */
     public function show(Image $image)
     {
-        
+        return view('image', [ 'image' => $image],['comments' => Comment::all()]);
     }
 
     /**
@@ -88,7 +88,7 @@ class ImageController extends Controller
         $comment->image_id = $image->id;
         $comment->content = $datos["content"];
         $comment->save();
-        return view('index', [ 'images' =>Image::all()],['comments' => Comment::all()]);
+        return view('image', [ 'image' => $image],['comments' => Comment::all()]);
     }
 
     /**

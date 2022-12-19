@@ -12,28 +12,17 @@
                     <table>
                         <tbody>
                             @foreach ( $images as $image )
-                                <tr>
-                                    @if($image->user_id == Auth::user()->id)
+                                @if($image->user_id == Auth::user()->id)
+                                    <tr class="mt-4">
                                         <td>
-                                            
-                                                <img style="width: 30%" src={{$image->image_path}}>
-                                            
+                                            <h1>{{$image->user->nick}}<h1>
+                                            <a href="{{route('images.show', ['image'=>$image->id])}}"><img src={{$image->image_path}}></a>
+                                            <p>{{$image->description }}</p>
                                         </td>
-                                        <td><p>{{$image->description}}</p></td>
-                                        <td>
-                                            
-                                            @foreach($comments as $comment)
-                                                @if($image->id == $comment->image_id)
-
-                                                    <p>{{$comment->user->nick}}  {{$comment->content}}</p>
-
-                                                @endif
-
-                                            @endforeach
-                                        </td>
-                                    @endif
-                                </tr>
+                                    </tr>
+                                @endif
                             @endforeach
+                           
                         </tbody>
                     </table>
                 </div>
