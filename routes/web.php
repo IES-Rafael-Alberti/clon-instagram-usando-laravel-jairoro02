@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::get('/subirimagen', function () {
 })->middleware(['auth', 'verified'])->name('subirimagen');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('likes', LikeController::class);
     Route::resource('images', ImageController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

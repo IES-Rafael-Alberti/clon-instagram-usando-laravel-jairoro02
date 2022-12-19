@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Image;
+use App\Models\User;
+use App\Models\Comment;
 use App\Models\Like;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class LikeController extends Controller
      */
     public function index()
     {
-        //
+        return view('miperfil', [ 'images' =>Image::all()],['comments' => Comment::all()]);
     }
 
     /**
