@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -33,9 +35,17 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Image $image)
     {
-        //
+        $datos = $request->all();
+        $comment = new Comment;
+        $comment-> user_id = Auth::user()->id;
+        $comment->image_id = $image->id;
+        $comment->content = $datos["content"];
+        return $comment;
+        $comment->save();
+        
+        return Redirect::route('index');
     }
 
     /**

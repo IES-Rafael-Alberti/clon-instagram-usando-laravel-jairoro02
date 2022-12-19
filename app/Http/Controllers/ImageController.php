@@ -93,6 +93,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        $image->deleteOrFail();
+        return view('welcome');
     }
 }
