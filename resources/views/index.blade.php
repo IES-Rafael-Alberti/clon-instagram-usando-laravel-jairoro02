@@ -44,9 +44,9 @@
                                         @endforeach
                                         <section>
 
-                                            <form method="POST" action="{{ route('comments.store',['image'=> $image->id]) }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+                                            <form method="POST" action="{{ route('images.update',['image'=> $image->id]) }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                                                 @csrf
-                                                @method('post')
+                                                @method('patch')
 
                                                 <div>
                                                     <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu comentario</label>

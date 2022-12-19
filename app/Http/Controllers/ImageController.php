@@ -82,7 +82,13 @@ class ImageController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+        $datos = $request->all();
+        $comment = new Comment;
+        $comment-> user_id = Auth::user()->id;
+        $comment->image_id = $image->id;
+        $comment->content = $datos["content"];
+        $comment->save();
+        return view('index', [ 'images' =>Image::all()],['comments' => Comment::all()]);
     }
 
     /**
@@ -94,6 +100,6 @@ class ImageController extends Controller
     public function destroy(Image $image)
     {
         $image->deleteOrFail();
-        return view('welcome');
+        return view('index', [ 'images' =>Image::all()],['comments' => Comment::all()]);
     }
 }

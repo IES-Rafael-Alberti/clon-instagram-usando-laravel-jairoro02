@@ -5,6 +5,9 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Image;
+use App\Models\User;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('index', [ 'images' =>Image::all()],['comments' => Comment::all()]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', function () {
